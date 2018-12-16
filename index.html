@@ -1,0 +1,78 @@
+<body>
+    "{% extends "layout.html" %}
+
+    {% block title %}
+        Index
+    {% endblock %}
+
+    {% block main %}
+    "
+    <form action="{{ url_for('index') }}" method="post">
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+
+            tab {
+                margin-left: 2.5em
+            }
+        </style>
+    <table>
+        <tbody>
+            <tr>
+                <th>Symbol</th>
+                <th>Stock</th>
+                <th>Stock's current price ($)</th>
+                <th>Shares</th>
+                <th>Total value of the holding ($)</th>
+            </tr>
+            {% for stock in stocks %}
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ symbol }}</td>
+                <td>{{ usd(price) }}</td>
+                <td>{{ shares }}</td>
+                <td>{{ usd(total) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <tab></tab>
+    <table>
+        <tbody>
+            <tr>
+                <th>Current balance</th>
+                <th>Total value of wallet</th>
+                </tr>
+                <tr>
+                <td> ${{ cash_balance }}</td>
+                <td> ${{ total_value }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <tab></tab>
+    <fieldset>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="add_cash" placeholder="Add cash" type="text">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-default" type="submit">Add cash (in $)</button>
+        </div>
+    </fieldset>
+    </form>
+    "
+
+    {% endblock %}"
+</body>

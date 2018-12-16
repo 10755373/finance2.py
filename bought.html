@@ -1,0 +1,8 @@
+
+
+
+
+
+
+return render_template("bought.html",symbol=symbol["name"], price=float(symbol["price"]),
+value_of_holding=shares * float(symbol["price"]), cash=float(remaining_cash[0]["cash"]))
